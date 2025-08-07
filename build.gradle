@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'fabric-loom' version '1.10'
+    id 'fabric-loom' version '1.6'
 }
 
 group 'com.originrealms'
@@ -8,18 +8,18 @@ version '1.21.1 Beta 1'
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.fabricmc.net/' } // Fabric's maven repository
-    maven { url 'https://maven.quiltmc.org/repository/release' } // Optional: for some additional libraries
+    maven { url 'https://maven.fabricmc.net/' }
+    maven { url 'https://maven.quiltmc.org/repository/release' }
 }
 
 dependencies {
     // Minecraft and Fabric Loader
-    minecraft "com.mojang:minecraft:1.21.1"
-    mappings "net.fabricmc:yarn:1.21.1+build.1:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.15.7"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
-    // Fabric API Modules
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.96.11+1.21.1"
+    // Fabric API
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     // Testing dependencies
     testImplementation platform('org.junit:junit-bom:5.10.0')
@@ -32,18 +32,23 @@ test {
 
 processResources {
     inputs.property "version", project.version
+    inputs.property "minecraft_version", minecraft_version
+    inputs.property "loader_version", loader_version
+
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand "version": project.version,
+                "minecraft_version": minecraft_version,
+                "loader_version": loader_version
     }
 }
 
 // Ensure the encoding is set to UTF-8
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release = 17
+    it.options.release = 21  // Updated to Java 21 for MC 1.21.1
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21  // Updated to Java 21
+    targetCompatibility = JavaVersion.VERSION_21  // Updated to Java 21
 }

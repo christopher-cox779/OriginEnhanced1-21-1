@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "originsenhanced",
-  "version": "1.10.1",
+  "version": "1.11.0",
   "name": "Origins Enhanced",
   "description": "A mod which aims to enhance the experience on Origin Realms.",
   "authors": [
     "Jackson",
-    "Koding"
+    "Koding",
+    "Telazorn"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/origins-enhanced",
@@ -34,7 +35,9 @@
     "fabric-lifecycle-events-v1": "*",
     "fabric-key-binding-api-v1": "*",
     "fabric-resource-loader-v0": "*",
-    "minecraft": "~1.20.6"
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabricloader": ">=0.16.0"
   },
   "custom": {
     "modmenu": {
