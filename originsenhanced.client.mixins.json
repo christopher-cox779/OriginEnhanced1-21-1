@@ -1,0 +1,43 @@
+{
+  "required": true,
+  "package": "com.originrealms.enhanced.core.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "client.KeyMappingAccessor",
+    "client.MinecraftMixin",
+    "client.MouseHandlerMixin",
+    "client.entity.LocalPlayerMixin",
+    "client.gui.screens.ChatScreenAccessor",
+    "client.gui.screens.PauseScreenMixin",
+    "client.gui.screens.inventory.AbstractContainerScreenMixin",
+    "client.gui.screens.inventory.InventoryScreenMixin",
+    "client.gui.screens.social.SocialInteractionsScreenMixin",
+    "client.model.ArmorStandModelMixin",
+    "client.model.geom.EntityModelSetMixin",
+    "client.multiplayer.ClientHandshakePacketListenerImplMixin",
+    "client.multiplayer.ClientPacketListenerMixin",
+    "client.multiplayer.ClientSuggestionProviderMixin",
+    "client.renderer.GameRendererMixin",
+    "client.renderer.entity.ArmorStandRendererMixin",
+    "client.renderer.entity.EntityRendererMixin",
+    "client.renderer.entity.ItemRendererMixin",
+    "client.renderer.entity.PlayerRendererMixin",
+    "client.resources.model.ModelBakeryMixin",
+    "resources.ResourceLocationMixin",
+    "world.entity.EntityMixin",
+    "world.entity.animal.horse.AbstractHorseMixin",
+    "world.entity.decoration.ArmorStandMixin",
+    "world.entity.decoration.ItemFrameMixin",
+    "world.inventory.InventoryMenuOffHandSlotMixin",
+    "world.item.ItemStackMixin",
+    "world.level.block.NoteBlockMixin",
+    "world.level.block.TripWireBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "DecoderExceptionMixin"
+  ],
+  "refmap": "client-origins-enhanced-refmap.json"
+}

@@ -1,0 +1,109 @@
+{
+  "locations": {
+    "Origin Isles": {
+      "presenceIcon": "orbit"
+    },
+    "Jacko's Farm": {
+      "presenceIcon": "jacko"
+    },
+    "Air Balloon Platform": {
+      "presenceIcon": "conductor_carlo"
+    },
+    "The Library": {
+      "presenceIcon": "arthur"
+    },
+    "Founders Fountain": {
+      "presenceIcon": "jasmine"
+    },
+    "Fracture Forge": {
+      "presenceIcon": "boulder"
+    },
+    "Auction House": {
+      "presenceIcon": "auctioneer"
+    },
+    "Ruby Exchange": {
+      "presenceIcon": "banker"
+    },
+    "Silo Square": {
+      "presenceIcon": "valdon"
+    },
+    "Fabrick Furniture": {
+      "presenceIcon": "fabia"
+    },
+    "The Mug Cafe": {
+      "presenceIcon": "lulu"
+    },
+    "The Forest": {
+      "presenceIcon": "scout_leah"
+    },
+    "Mayors Office": {
+      "presenceIcon": "mayor"
+    },
+    "Community Centre": {
+      "presenceIcon": "ingus"
+    },
+    "Crystal Cavern": {
+      "presenceIcon": "clay"
+    },
+    "Cosmo's Cosmetics": {
+      "presenceIcon": "cosmo"
+    },
+    "Nova's Laboratory": {
+      "presenceIcon": "nova"
+    },
+    "Rusty Bukkit": {
+      "presenceIcon": "rusty"
+    },
+    "The Get Go": {
+      "presenceIcon": "adventurer"
+    },
+    "The Arcade": {
+      "presenceIcon": "bartender_otto"
+    },
+    "Rusty Bukkit Rooftop": {
+      "presenceIcon": "rusty",
+      "chatroom": true
+    },
+    "Mayors Fireplace": {
+      "presenceIcon": "mayor",
+      "chatroom": true
+    },
+    "The Treehouse": {
+      "chatroom": true
+    },
+    "Stable Chat Room": {
+      "presenceIcon": "jacko",
+      "chatroom": true
+    },
+    "The Mug Rooftop": {
+      "presenceIcon": "lulu",
+      "chatroom": true
+    }
+  },
+  "blocks": {
+    "plant_box": {
+      "intractable": true,
+      "state": {
+        "instrument": "BANJO",
+        "note": 12,
+        "powered": false
+      }
+    }
+  },
+  "ranks": {
+    "Admin": {
+      "text": "\uA401",
+      "staff": true
+    },
+    "Mod": {
+      "text": "\uA465",
+      "staff": true
+    },
+    "Builder": {
+      "text": "\uA403",
+      "staff": true
+    }
+  },
+  "screens": {
+  }
+}

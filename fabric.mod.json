@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "originsenhanced",
+  "version": "1.10.1",
+  "name": "Origins Enhanced",
+  "description": "A mod which aims to enhance the experience on Origin Realms.",
+  "authors": [
+    "Jackson",
+    "Koding"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/origins-enhanced",
+    "issues": "https://www.curseforge.com/minecraft/mc-mods/origins-enhanced/issues"
+  },
+  "license": "All Rights Reserved",
+  "environment": "client",
+  "icon": "assets/originsenhanced/icon.png",
+  "mixins": [
+    {
+      "config": "originsenhanced.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "entrypoints": {
+    "client": [
+      "com.originrealms.enhanced.fabric.OriginsEnhancedFabric"
+    ],
+    "modmenu": [
+      "com.originrealms.enhanced.fabric.config.ModMenuImpl"
+    ]
+  },
+  "depends": {
+    "fabric-blockrenderlayer-v1": "*",
+    "fabric-lifecycle-events-v1": "*",
+    "fabric-key-binding-api-v1": "*",
+    "fabric-resource-loader-v0": "*",
+    "minecraft": "~1.20.6"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.twitter": "https://twitter.com/OriginRealms",
+        "modmenu.discord": "https://discord.gg/originrealms",
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/origins-enhanced"
+      }
+    }
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/core-3.6.4.jar"
+    },
+    {
+      "file": "META-INF/jars/DiscordIPC-0.5.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-api-base-0.4.40+80f8cf51b0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-blockrenderlayer-v1-1.1.50+80f8cf51b0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-key-binding-api-v1-1.0.45+80f8cf51b0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-lifecycle-events-v1-2.3.4+c5fc38b3b0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-networking-api-v1-4.2.0+a916f7c5b0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-rendering-v1-4.2.5+850ef40bb0.jar"
+    },
+    {
+      "file": "META-INF/jars/fabric-resource-loader-v0-1.1.1+f4bfb622b0.jar"
+    },
+    {
+      "file": "META-INF/jars/networking-2.2.0.jar"
+    },
+    {
+      "file": "META-INF/jars/toml-3.6.4.jar"
+    }
+  ]
+}
