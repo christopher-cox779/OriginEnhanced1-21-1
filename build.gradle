@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'fabric-loom' version '1.7'
+    id 'fabric-loom' version '1.7.1'
 }
 
 group 'com.originrealms'
@@ -8,26 +8,16 @@ version '1.21.1 Beta 1'
 
 repositories {
     mavenCentral()
-    maven {
-        name = 'Fabric'
-        url = 'https://maven.fabricmc.net/'
-    }
-    maven {
-        name = 'Quilt'
-        url = 'https://maven.quiltmc.org/repository/release'
-    }
+    maven { url 'https://maven.fabricmc.net/' }
+    maven { url 'https://maven.quiltmc.org/repository/release' }
 }
 
 dependencies {
-    // Minecraft and Fabric Loader
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${loader_version}"
-
-    // Fabric API
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
-    // Testing dependencies
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
@@ -48,10 +38,9 @@ processResources {
     }
 }
 
-// Ensure the encoding is set to UTF-8
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release = 21  // Java 21 for MC 1.21.1
+    it.options.release = 21
 }
 
 java {
