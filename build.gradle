@@ -8,8 +8,14 @@ version '1.21.1 Beta 1'
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.fabricmc.net/' }
-    maven { url 'https://maven.quiltmc.org/repository/release' }
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+    maven {
+        name = 'Quilt'
+        url = 'https://maven.quiltmc.org/repository/release'
+    }
 }
 
 dependencies {
@@ -45,10 +51,10 @@ processResources {
 // Ensure the encoding is set to UTF-8
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release = 21  // Updated to Java 21 for MC 1.21.1
+    it.options.release = 21  // Java 21 for MC 1.21.1
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21  // Updated to Java 21
-    targetCompatibility = JavaVersion.VERSION_21  // Updated to Java 21
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
