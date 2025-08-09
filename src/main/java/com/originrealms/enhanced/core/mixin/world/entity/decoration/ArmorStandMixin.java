@@ -6,12 +6,11 @@ import com.originrealms.enhanced.core.util.OriginUtil;
 import com.originrealms.enhanced.core.util.mixin.ArmorStandExtensions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.class_1299;
-import net.minecraft.class_1309;
-import net.minecraft.class_1531;
-import net.minecraft.class_1937;
-import net.minecraft.class_2379;
-import net.minecraft.class_238;
+import net.minecraft.core.Rotations;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,117 +19,78 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
-@Mixin({class_1531.class})
-public abstract class ArmorStandMixin extends class_1309 implements ArmorStandExtensions {
+@Mixin(ArmorStand.class)
+public abstract class ArmorStandMixin extends LivingEntity implements ArmorStandExtensions {
    @Shadow
    @Final
-   private static class_2379 field_7113;
+   private static Rotations DEFAULT_HEAD_POSE;
    @Shadow
    @Final
-   private static class_2379 field_7119;
+   private static Rotations DEFAULT_BODY_POSE;
    @Shadow
    @Final
-   private static class_2379 field_7124;
+   private static Rotations DEFAULT_LEFT_ARM_POSE;
    @Shadow
    @Final
-   private static class_2379 field_7115;
+   private static Rotations DEFAULT_RIGHT_ARM_POSE;
    @Shadow
    @Final
-   private static class_2379 field_7121;
+   private static Rotations DEFAULT_LEFT_LEG_POSE;
    @Shadow
    @Final
-   private static class_2379 field_7117;
-   private class_2379 oe$prevHeadPose;
-   private class_2379 oe$prevBodyPose;
-   private class_2379 oe$prevLeftArmPose;
-   private class_2379 oe$prevRightArmPose;
-   private class_2379 oe$prevLeftLegPose;
-   private class_2379 oe$prevRightLegPose;
+   private static Rotations DEFAULT_RIGHT_LEG_POSE;
 
-   private ArmorStandMixin(class_1299<? extends class_1531> entityType, class_1937 level) {
+   private Rotations oe$prevHeadPose;
+   private Rotations oe$prevBodyPose;
+   private Rotations oe$prevLeftArmPose;
+   private Rotations oe$prevRightArmPose;
+   private Rotations oe$prevLeftLegPose;
+   private Rotations oe$prevRightLegPose;
+
+   private ArmorStandMixin(EntityType<? extends LivingEntity> entityType, Level level) {
       super(entityType, level);
-      this.oe$prevHeadPose = field_7113;
-      this.oe$prevBodyPose = field_7119;
-      this.oe$prevLeftArmPose = field_7124;
-      this.oe$prevRightArmPose = field_7115;
-      this.oe$prevLeftLegPose = field_7121;
-      this.oe$prevRightLegPose = field_7117;
    }
 
-   @Shadow
-   public abstract class_2379 method_6921();
-
-   @Shadow
-   public abstract class_2379 method_6923();
-
-   @Shadow
-   public abstract class_2379 method_6930();
-
-   @Shadow
-   public abstract class_2379 method_6903();
-
-   @Shadow
-   public abstract class_2379 method_6917();
-
-   @Shadow
-   public abstract class_2379 method_6900();
-
-   @Inject(
-      method = {"tick"},
-      at = {@At("HEAD")}
-   )
+   @Inject(method = "tick", at = @At("HEAD"))
    public void tick(CallbackInfo ci) {
-      if (!this.oe$prevHeadPose.equals(this.method_6921())) {
-         this.oe$prevHeadPose = this.method_6921();
+      if (Platform.getConfig().isFeatureEnabled(OriginFeature.SMOOTH_ANIMATIONS) && OriginUtil.isConnected()) {
+         ArmorStand armorStand = (ArmorStand)(Object)this;
+         this.oe$prevHeadPose = armorStand.getHeadPose();
+         this.oe$prevBodyPose = armorStand.getBodyPose();
+         this.oe$prevLeftArmPose = armorStand.getLeftArmPose();
+         this.oe$prevRightArmPose = armorStand.getRightArmPose();
+         this.oe$prevLeftLegPose = armorStand.getLeftLegPose();
+         this.oe$prevRightLegPose = armorStand.getRightLegPose();
       }
-
-      if (!this.oe$prevBodyPose.equals(this.method_6923())) {
-         this.oe$prevBodyPose = this.method_6923();
-      }
-
-      if (!this.oe$prevLeftArmPose.equals(this.method_6930())) {
-         this.oe$prevLeftArmPose = this.method_6930();
-      }
-
-      if (!this.oe$prevRightArmPose.equals(this.method_6903())) {
-         this.oe$prevRightArmPose = this.method_6903();
-      }
-
-      if (!this.oe$prevLeftLegPose.equals(this.method_6917())) {
-         this.oe$prevLeftLegPose = this.method_6917();
-      }
-
-      if (!this.oe$prevRightLegPose.equals(this.method_6900())) {
-         this.oe$prevRightLegPose = this.method_6900();
-      }
-
    }
 
-   public class_2379 oe$getPrevHeadPose() {
-      return this.oe$prevHeadPose;
+   @Override
+   public Rotations oe$getPrevHeadPose() {
+      return this.oe$prevHeadPose != null ? this.oe$prevHeadPose : DEFAULT_HEAD_POSE;
    }
 
-   public class_2379 oe$getPrevBodyPose() {
-      return this.oe$prevBodyPose;
+   @Override
+   public Rotations oe$getPrevBodyPose() {
+      return this.oe$prevBodyPose != null ? this.oe$prevBodyPose : DEFAULT_BODY_POSE;
    }
 
-   public class_2379 oe$getPrevLeftArmPose() {
-      return this.oe$prevLeftArmPose;
+   @Override
+   public Rotations oe$getPrevLeftArmPose() {
+      return this.oe$prevLeftArmPose != null ? this.oe$prevLeftArmPose : DEFAULT_LEFT_ARM_POSE;
    }
 
-   public class_2379 oe$getPrevRightArmPose() {
-      return this.oe$prevRightArmPose;
+   @Override
+   public Rotations oe$getPrevRightArmPose() {
+      return this.oe$prevRightArmPose != null ? this.oe$prevRightArmPose : DEFAULT_RIGHT_ARM_POSE;
    }
 
-   public class_2379 oe$getPrevLeftLegPose() {
-      return this.oe$prevLeftLegPose;
+   @Override
+   public Rotations oe$getPrevLeftLegPose() {
+      return this.oe$prevLeftLegPose != null ? this.oe$prevLeftLegPose : DEFAULT_LEFT_LEG_POSE;
    }
 
-   public class_2379 oe$getPrevRightLegPose() {
-      return this.oe$prevRightLegPose;
-   }
-
-   public class_238 method_5830() {
-      return Platform.getConfig().isFeatureEnabled(OriginFeature.EXPAND_MODEL_BOUNDING_BOX) && OriginUtil.isConnected() ? this.method_5829().method_1014(4.5D) : super.method_5830();
+   @Override
+   public Rotations oe$getPrevRightLegPose() {
+      return this.oe$prevRightLegPose != null ? this.oe$prevRightLegPose : DEFAULT_RIGHT_LEG_POSE;
    }
 }
