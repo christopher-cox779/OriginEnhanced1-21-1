@@ -6,6 +6,7 @@ import com.originrealms.enhanced.core.util.OriginUtil;
 import com.originrealms.enhanced.core.util.mixin.ArmorStandExtensions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.class_1531;
 import net.minecraft.class_548;
 import net.minecraft.class_551;
